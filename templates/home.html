@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Auto Pop-up Form with Close Button</title>
+	<style>
+		/* Pop-up Form CSS */
+		.form-popup {
+			display: none;
+			position: fixed;
+			 top: 50%;
+  			 left: 50%;
+  			transform: translate(-50%, -50%);
+			border: 3px solid #f1f1f1;
+
+			z-index: 9;
+			padding: 20px;
+			background-color: #ffffff;
+			max-width: 500px;
+			width: 90%;
+			box-shadow: 0px 0px 10px #888888;
+			border-radius: 5px;
+		}
+
+		.form-popup h2 {
+			font-size: 24px;
+			margin-top: 0px;
+		}
+
+		.form-popup p {
+			margin-top: 10px;
+		}
+
+		.form-popup label {
+			display: block;
+			margin-bottom: 5px;
+		}
+
+		.form-popup input[type="number"], .form-popup input[type="email"] {
+			width: 80%;
+			padding: 10px;
+			border-radius: 3px;
+			border: 1px solid #cccccc;
+			margin-bottom: 10px;
+			font-size: 16px;
+		}
+
+		.form-popup input[type="submit"] {
+			background-color: #008CBA;
+			color: #ffffff;
+			border: none;
+			cursor: pointer;
+			padding: 10px;
+			font-size: 18px;
+			border-radius: 3px;
+		}
+
+		.form-popup .btn:hover {
+			background-color: #0077A3;
+		}
+
+		.form-popup .close {
+			position: absolute;
+			top: 5px;
+			right: 5px;
+			color: #aaaaaa;
+			font-size: 28px;
+			font-weight: bold;
+			cursor: pointer;
+		}
+
+		.form-popup .close:hover {
+			color: #000000;
+		}
+		nav {
+  background-color: #333;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav li {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+nav li:last-child {
+  margin-right: 0;
+}
+
+nav a {
+  color: #fff;
+  display: inline-block;
+  font-size: 16px;
+  padding: 10px;
+  text-decoration: none;
+}
+
+nav a:hover {
+  background-color: #555;
+}
+
+	</style>
+</head>
+<body>
+
+    <header>
+      <h1>Cals tracker</h1>
+<nav>
+  <ul>
+    <li><a href="home">Home</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="cals_track">Track your Calorie</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+</nav>
+    </header>
+	<p>{{message}}</p>
+	<p>{{weekly_gain}}</p>
+
+
+
+	<!-- Auto Pop-up Form HTML -->
+	<div class="form-popup" id="myForm">
+		<span class="close" onclick="closeForm()">&times;</span>
+		<h2>Enter the details </h2>
+		<p>Lets track down your progress.</p>
+		<form action="add_details">
+			{% csrf_token %}
+			<input type="number"  name="height" placeholder="Enter your in height CM" required><br>
+			<input type="number"  name="weight" placeholder="Enter your weight in KG " required><br>
+			<input type="number"  name="Goal" placeholder="Enter your Goal in KG " required><br>
+			<p>Duration</p>
+			<label>
+			1 Month
+			<input  type="checkbox" name="duration" value="1">
+				</label>
+			<label>
+				3 Month
+				<input  type="checkbox" name="duration" value="3"></label>
+			<label>
+				6 Month
+				<input  type="checkbox" name="duration" value="6">
+				</label>
+			<input type="submit">
+		</form>
+
+	</div>
+	<script>
+		// Auto Pop-up Form JavaScript
+		setTimeout(function() {
+			document.getElementById("myForm").style.display = "block";
+		}, 5000); // Set time delay here (in milliseconds)
+
+		// Close Button JavaScript
+		function closeForm() {
+			document.getElementById("myForm").style.display = "none";
+		}
+	</script>
+</body>
+</html>
