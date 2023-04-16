@@ -115,8 +115,10 @@ def track(request):
     item = request.GET['item']
     quantity = request.GET['quantity']
     meal_tym = request.GET['meal_time']
-    global calories
-    calories=0
+    if (item == ''):
+        return render(request, 'cals.html', {'message': "enter the details"})
+    global calories, ans
+    calories = 0
     date = datetime.utcnow()  # create a datetime object representing the current UTC time
 
     query = {'food': item}
@@ -135,23 +137,24 @@ def track(request):
            'date': date
            }
     collection4.insert_one(dic)
-    dic2={
-        'email':name_param,
-        'total_calorie':calories
+    dic2 = {
+        'email': name_param,
+        'total_calorie': calories,
+        'date': date
 
     }
-    y=collection5.find(query2)
+    y = collection5.find(query2)
     count = collection5.count_documents(query2)
 
     if count > 0:
         print("trigerred 1")
         for result in y:
-            calo=result.get('total_calorie',"")
-            calories+=int(calo)
+            calo = result.get('total_calorie', "")
+            calories += int(calo)
 
-        myquery={"email":name_param}
-        newvalue={"$set":{'total_calorie':calories}}
-        collection5.update_one(myquery,newvalue)
+        myquery = {"email": name_param}
+        newvalue = {"$set": {'total_calorie': calories}}
+        collection5.update_one(myquery, newvalue)
     else:
         collection5.insert_one(dic2)
 
@@ -165,13 +168,25 @@ def log(request):
     projection = {'meal_time': 1, 'food': 1, 'quantity': 1, 'calorie': 1, 'date': 1}
     results = collection4.find(query, projection)
 
-    my_data = [{'food': result['food'], 'quantity': result['quantity'], 'meal_time':result['meal_time'], 'date':result['date']} for result in results]
+    my_data = [{'food': result['food'], 'quantity': result['quantity'], 'meal_time': result['meal_time'],
+                'date': result['date']} for result in results]
 
-    query2={'email':name_param}
-    projection2={'total_calorie':1, 'email':1}
-    res=collection5.find(query2, projection2)
+    query2 = {'email': name_param}
+    projection2 = {'total_calorie': 1, 'email': 1}
+    res = collection5.find(query2, projection2)
     for x in res:
         print(x['total_calorie'])
     print("###")
     print(my_data)
     return render(request, 'cals.html', {'log': my_data})
+
+
+def profile(request):
+    query = {'mail': name_param}
+    projection = {'height': 1, 'weight': 1, 'Goal': 1, 'Program_type': 1, 'Weekly_gain': 1, 'mail': 1}
+    res = collection2.find(query, projection)
+
+    my_data = [{'height': result['height'], 'weight': result['weight'], 'Goal': result['Goal'],
+                'Program_type': result['Program_type'], 'Weekly_gain': result['Weekly_gain'], 'mail':result['mail']} for result in res]
+    print(my_data)
+    return render(request, 'profile.html', {'details': my_data})

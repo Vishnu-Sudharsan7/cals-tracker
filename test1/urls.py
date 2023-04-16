@@ -8,6 +8,7 @@ urlpatterns=[
     path('cals_track', views.cals_track, name='cals_track'),
     path('track', views.track, name='track'),
     path('log',views.log,name='log'),
+    path('profile',views.profile,name='profile'),
     path('logincheck', views.logincheck, name='logincheck'),
     path('add_details', views.add_details, name='add_details')
 ]

@@ -25,6 +25,7 @@ urlpatterns = [
     path('home1', include('test1.urls')),
     path('track', include('test1.urls')),
     path('log',include('test1.urls')),
+    path('profile',include('test1.urls')),
     path('cals_track', include('test1.urls')),
     path('logincheck', include('test1.urls')),
     path('add_details', include('test1.urls')),

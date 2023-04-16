@@ -72,7 +72,7 @@
 			color: #000000;
 		}
 		nav {
-  background-color: #333;
+  background-color: #E41B17	;
 }
 
 nav ul {
@@ -102,23 +102,233 @@ nav a:hover {
   background-color: #555;
 }
 
+
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;900&display=swap');
+
+::selection {
+	 background-color: #fff;
+}
+ body {
+	 width: 100%;
+	 height: 100vh;
+   text-align: center;
+   font-family: 'Poppins', sans-serif;
+	 align-items: center;
+	 justify-content: center;
+  background-color:#E9AB17	;
+   /*color: #fff;*/
+}
+ span {
+	 background: linear-gradient(to right, #bf0f93 0%, #f4711f 100%);
+	 -webkit-background-clip: text;
+	 -webkit-text-fill-color: transparent;
+	 font-size: 25px;
+}
+ span2 {
+	 background: linear-gradient(to right, #bf0f93 0%, #f4711f 100%);
+	 -webkit-background-clip: text;
+	 -webkit-text-fill-color: transparent;
+	 font-size: 35px;
+}
+ header{
+  font-weight: 900;
+  text-align: center;
+  font-size: 50px;
+}
+.claim{
+  font-size: 25px;
+  text-align: center;
+  margin: 0;
+  font-weight: 300;
+}
+.desc{
+  font-weight: 300;
+  text-align: center;
+  margin-top: 20px;
+  font-family:"papyrus"
+}
+.container {  display: grid;
+  grid-template-columns: 300px 300px 300px;
+  grid-template-rows: 75px 75px;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    ". . ."
+    ". . .";
+  justify-content: center;
+}
+p{
+  margin: 0;
+}
+.e1{
+  font-size: 25px;
+}
+i {
+  font-size: 55px;
+}
+button{
+  height: 50px;
+  width: 175px;
+  background-color:#f4711f;
+  color: #fff;
+  border: none;
+  font-family: inherit;
+  border-radius: 5px;
+}
+#maiousbg{
+  margin: 0;
+}
+.title{
+font-family:"Lucida Handwriting";
+color:#6A0DAD
+}
+
+
+
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+.container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 40px;
+  padding: 40px;
+}
+.container .card {
+  position: relative;
+  width: 220px;
+  height: 250px;
+  background:#E9AB17;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container .card .percent {
+  position: relative;
+  width: 150px;
+  height: 150px;
+}
+.container .card .percent svg {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  transform: rotate(270deg);
+}
+.container .card .percent svg circle {
+  width: 100%;
+  height: 100%;
+  fill: transparent;
+  stroke-width: 2;
+  stroke: #191919;
+  transform: translate(5px, 5px);
+}
+.container .card .percent svg circle:nth-child(2) {
+  stroke: var(--clr);
+  stroke-dasharray: 440;
+  stroke-dashoffset: calc(440 - (440 * var(--num)) / 100);
+  opacity: 0;
+  animation: fadeIn 1s linear forwards;
+  animation-delay: 2.5s;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.dot {
+  position: absolute;
+  inset: 5px;
+  z-index: 10;
+  /* 360deg / 100 = 3.6 */
+  animation: animateDot 2s linear forwards;
+}
+@keyframes animateDot {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(calc(3.6deg * var(--num)));
+  }
+}
+.dot::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--clr);
+  box-shadow: 0 0 10px var(--clr), 0 0 30px var(--clr);
+}
+.number {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  opacity: 0;
+  animation: fadeIn 1s linear forwards;
+  animation-delay: 2.5s;
+}
+.number h2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-weight: 700;
+  font-size: 2.5em;
+}
+.number h2 span {
+  font-weight: 300;
+  color: #fff;
+  font-size: 0.5em;
+}
+.number p {
+  font-weight: 300;
+  font-size: 0.75em;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+
 	</style>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+	  <h3 class="claim">The <span>BEST</span> tracker to date.</h3>
+
+	<script src="https://kit.fontawesome.com/bdc52decb4.js" crossorigin="anonymous"></script>
+
 </head>
 <body>
 
     <header>
-      <h1>Cals tracker</h1>
+      <h1 class="title">Cals tech</h1>
 <nav>
   <ul>
     <li><a href="home">Home</a></li>
     <li><a href="#">About</a></li>
     <li><a href="cals_track">Track your Calorie</a></li>
-    <li><a href="#">Contact</a></li>
+    <li><a href="profile">Profile</a></li>
   </ul>
 </nav>
     </header>
-	<p>{{message}}</p>
-	<p>{{weekly_gain}}</p>
+
 
 
 
@@ -159,5 +369,92 @@ nav a:hover {
 			document.getElementById("myForm").style.display = "none";
 		}
 	</script>
+
+
+  <h4 class="desc">Welcome to Cals Tech, where we're passionate about helping you achieve your health and fitness goals. Our website is designed to make it easy and fun to get fit, stay healthy, and live your best life. </h4>
+<h1>Farland by the numbers</h1>
+<div class="container">
+  <div class="e1"><i class="fa-solid fa-code-pull-request"></i><br><span2 id="monkey"><b>10264</b><br></span2><p>tracking daily</p></div>
+  <div class="e2"><i class="fa-solid fa-shapes"></i><br><span2><b>6K+</b><br></span2><p>active users</p></div>
+  <div class="e3"><i class="fa-solid fa-person-running"></i><br><span2><b>99.8%</b><br></span2><p>accuracy ratio</p></div>
+</div>
+
+
+<div>
+
+	<div class="container">
+  <div class="card">
+    <div class="percent" style="--clr:#04fc43;--num:85;">
+      <div class="dot"></div>
+      <svg>
+        <circle cx="70" cy="70" r="70"></circle>
+        <circle cx="70" cy="70" r="70"></circle>
+      </svg>
+      <div class="number">
+        <h2>85<span>%</span></h2>
+        <p>Health</p>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="percent" style="--clr:#fee800;--num:72;">
+      <div class="dot"></div>
+      <svg>
+        <circle cx="70" cy="70" r="70"></circle>
+        <circle cx="70" cy="70" r="70"></circle>
+      </svg>
+      <div class="number">
+        <h2>72<span>%</span></h2>
+        <p>fitness</p>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="percent" style="--clr:#ff00be;--num:60;">
+      <div class="dot"></div>
+      <svg>
+        <circle cx="70" cy="70" r="70"></circle>
+        <circle cx="70" cy="70" r="70"></circle>
+      </svg>
+      <div class="number">
+        <h2>60<span>%</span></h2>
+        <p>Lifestyle</p>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="percent" style="--clr:#06ccff;--num:95;">
+      <div class="dot"></div>
+      <svg>
+        <circle cx="70" cy="70" r="70"></circle>
+        <circle cx="70" cy="70" r="70"></circle>
+      </svg>
+      <div class="number">
+        <h2>95<span>%</span></h2>
+        <p>Goal</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</div>
+
+
+<div>
+<h1>Perks of using Cals Tech</h1>
+  <div class="container">
+  <div >Plenty of Workout and Diet providers</div>
+  <div >Life and Money saving  </div>
+  <div >Tons of plans in our system</div>
+  <div >State-of-the-art calorie balancing</div>
+  <div> Stay strong</div>
+    <div >Start on a click</div>
+</div>
+<br>
+ <h2 id="maiousbg">Not enough?</h2><br>
+<button>Try it yourself, for free.</button>
+</div>
+
 </body>
 </html>
