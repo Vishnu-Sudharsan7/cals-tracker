@@ -145,16 +145,26 @@ def track(request):
     }
     y = collection5.find(query2)
     count = collection5.count_documents(query2)
+    date=datetime.utcnow()
+    date=date.date()
+
+
 
     if count > 0:
         print("trigerred 1")
         for result in y:
             calo = result.get('total_calorie', "")
-            calories += int(calo)
+            date_param=result.get('date',"")
+            date_param=date_param.date()
 
-        myquery = {"email": name_param}
-        newvalue = {"$set": {'total_calorie': calories}}
-        collection5.update_one(myquery, newvalue)
+
+        if date_param==date:
+            calories += int(calo)
+            myquery = {"email": name_param}
+            newvalue = {"$set": {'total_calorie': calories}}
+            collection5.update_one(myquery, newvalue)
+        else:
+            collection5.insert_one(dic2)
     else:
         collection5.insert_one(dic2)
 
