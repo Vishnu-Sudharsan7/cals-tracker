@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Profile</title>
     <style>
         * {
   margin: 0;
@@ -10,7 +10,7 @@
 }
 
 body {
-  background: url(https://newevolutiondesigns.com/images/freebies/city-wallpaper-18.jpg);
+  background: url(https://mhealthintelligence.com/images/site/features/_normal/2016-01-26-physician-mhealth-adoption.png);
   background-size: cover;
   font-family: verdana;
 }
@@ -243,13 +243,17 @@ nav a:hover {
 nav {
   background-color: #E41B17	;
 }
+.title{
+font-family:"Lucida Handwriting";
+color:#6A0DAD
+}
     </style>
 </head>
 <body>
      {% for item in details %}
-
+<center>
 <header>
-      <h1>Cals tech</h1>
+      <h1 class="title">Cals tech</h1>
 <nav>
   <ul>
     <li><a href="home1">Home</a></li>
@@ -259,7 +263,7 @@ nav {
   </ul>
 </nav>
     </header>
-
+</center>
 
 <div class="bg-cover"></div>
 <div class="container">
@@ -278,7 +282,7 @@ nav {
   <div class="footer">
     <i class="fa fa-lock"></i>
     <br/>
-    <h4 class="foot">Weekly Gain:{{item.Weekly_gain}}</h4>
+    <h4 class="foot">Weekly Gain:{{item.Weekly_gain}} kg</h4>
   </div>
 </div>
     {% endfor %}

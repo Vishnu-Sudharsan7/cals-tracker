@@ -23,6 +23,8 @@ calories = 0
 
 # Create your views here.
 def home(request):
+
+
     return render(request, 'signin.html')
 
 
@@ -31,7 +33,19 @@ def signup(request):
 
 
 def home1(request):
-    return render(request, 'home.html', {'message': name_param})
+    query = {'mail': name_param}
+    query2 = {'email': name_param}
+    res = collection5.find(query2)
+
+    for x in res:
+        current_calorie = x.get('total_calorie', "")
+        print(current_calorie)
+        current_cal = int(current_calorie)
+    res = collection2.find(query)
+    for x in res:
+        goal_calorie = x.get('calorie_goal', "")
+
+    return render(request, 'home.html', {'current_cal': current_cal, 'goal_calorie': goal_calorie})
 
 
 def cals_track(request):
@@ -60,13 +74,27 @@ def logincheck(request):
     email = request.POST['email']
     password = request.POST['password']
     dic = {}
+    current_cal=0
+    goal_calorie=0
     cursor = collection.find({}, {"email": 1, "password": 1})
     for i in cursor:
         dic[i['email']] = i['password']
     if email in dic.keys() and password in dic.values():
         global name_param
         name_param = email
-        return render(request, 'home.html', {'message': name_param})
+
+        query = {'mail': name_param}
+        query2={'email':name_param}
+        res = collection5.find(query2)
+        for x in res:
+            current_calorie = x.get('total_calorie', "")
+            print(current_calorie)
+            current_cal=int(current_calorie)
+        res = collection2.find(query)
+        for x in res:
+            goal_calorie = x.get('calorie_goal', "")
+
+        return render(request, 'home.html',{'current_cal': current_cal,'goal_calorie': goal_calorie} )
     elif email in dic.keys() and password not in dic.values():
         return render(request, 'signin.html', {'message': 'Incorrect Password'})
     else:
@@ -91,12 +119,15 @@ def add_details(request):
     else:
         program = "Weight loss"
         weekly_gain = (int(weight) - int(goal)) / (int(duration) * 4)
+    cals_intake = int(goal) * 2.2
+    cals_intake = cals_intake * 12
 
     dic = {'mail': name_param,
            'duration': duration,
            'height': height,
            'weight': weight,
            'Goal': goal,
+           'calorie_goal': cals_intake,
            'Weekly_gain': weekly_gain,
            'Program_type': program}
     for i in cursor:
@@ -145,22 +176,19 @@ def track(request):
     }
     y = collection5.find(query2)
     count = collection5.count_documents(query2)
-    date=datetime.utcnow()
-    date=date.date()
-
-
+    date = datetime.utcnow()
+    date = date.date()
 
     if count > 0:
         print("trigerred 1")
         for result in y:
             calo = result.get('total_calorie', "")
-            date_param=result.get('date',"")
-            date_param=date_param.date()
+            date_param1 = result.get('date', "")
+            date_param = date_param1.date()
 
-
-        if date_param==date:
+        if date_param == date:
             calories += int(calo)
-            myquery = {"email": name_param}
+            myquery = {"email": name_param,"date":date_param1}
             newvalue = {"$set": {'total_calorie': calories}}
             collection5.update_one(myquery, newvalue)
         else:
@@ -197,6 +225,7 @@ def profile(request):
     res = collection2.find(query, projection)
 
     my_data = [{'height': result['height'], 'weight': result['weight'], 'Goal': result['Goal'],
-                'Program_type': result['Program_type'], 'Weekly_gain': result['Weekly_gain'], 'mail':result['mail']} for result in res]
+                'Program_type': result['Program_type'], 'Weekly_gain': result['Weekly_gain'], 'mail': result['mail']}
+               for result in res]
     print(my_data)
     return render(request, 'profile.html', {'details': my_data})

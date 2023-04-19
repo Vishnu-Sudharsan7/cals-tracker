@@ -1,89 +1,138 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <link rel="stylesheet" href="D:\vs\web projects\projects\project2\public\signup.css">
+<html lang="en" dir="ltr">
+  <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<style>
-    /* Set font styles and colors */
-body {
-    font-family: Arial, sans-serif;
-    color: #333;
-    background-color: #f4f4f4;
-}
-h2 {
-    text-align: center;
-    margin-top: 40px;
-    margin-bottom: 20px;
-}
-form {
-    width: 300px;
-    margin: 0 auto;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
-}
-input[type="text"],
-input[type="email"],
-input[type="password"] {
-    display: block;
-    width: 100%;
-    margin-bottom: 10px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
-}
-input[type="submit"] {
-    display: block;
-    width: 100%;
-    margin-top: 20px;
-    padding: 10px;
-    background-color: #008CBA;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-input[type="submit"]:hover {
-    background-color: #005F6B;
-}
-a {
-    display: block;
-    text-align: center;
-    margin-top: 20px;
-    color: #008CBA;
-    text-decoration: none;
-}
-a:hover {
-    text-decoration: underline;
-}
 
-</style>
-
+    <style>
+      @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+body{
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url("https://momentous-earth-d6f.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F257c0541-9218-4c87-a70d-6bb200869b26%2FUntitled.png?id=80124f2b-319a-4fb9-8aa9-d884fbf4a46b&table=block&spaceId=e1fd8c7d-b464-4da7-b3e6-86b1f08566f2&width=2000&userId=&cache=v2"); /* The image used */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover;
+}
+.wrapper{
+  position: fixed;
+  left: 105px;
+  max-width: 430px;
+  width: 100%;
+  background: white;
+  padding: 34px;
+  border-radius: 6px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+}
+.wrapper h2{
+  position: relative;
+  font-size: 22px;
+  font-weight: 600;
+  color: #333;
+}
+.wrapper h2::before{
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 28px;
+  border-radius: 12px;
+  background: #ffe073;
+}
+.wrapper form{
+  margin-top: 30px;
+}
+.wrapper form .input-box{
+  height: 52px;
+  margin: 18px 0;
+}
+form .input-box input{
+  height: 100%;
+  width: 100%;
+  outline: none;
+  padding: 0 15px;
+  font-size: 17px;
+  font-weight: 400;
+  color: #333;
+  border: 1.5px solid #C7BEBE;
+  border-bottom-width: 2.5px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+.input-box input:focus,
+.input-box input:valid{
+  border-color:#ffe073;
+}
+form .policy{
+  display: flex;
+  align-items: center;
+}
+form h3{
+  color: #707070;
+  font-size: 14px;
+  font-weight: 500;
+  margin-left: 10px;
+}
+.input-box.button input{
+  color: #000000;
+  letter-spacing: 1px;
+  border: none;
+  background: #ffe073;
+  cursor: pointer;
+}
+.input-box.button input:hover{
+  background:#ffe073;
+}
+form .text h3{
+ color: #333;
+ width: 100%;
+ text-align: center;
+}
+form .text h3 a{
+  color:#000000;
+  text-decoration: none;
+}
+form .text h3 a:hover{
+  text-decoration: underline;
+}
+    </style>
+   </head>
 <body>
-    <h2>Sign-Up</h2>
-
+  <div class="wrapper">
+    <h2>Registration</h2>
     <form action="create">
-					<input class="text" type="text" name="username" placeholder="Username" required="">
-					<input class="text email" type="email" name="email" placeholder="Email" required="">
-					<input class="text" type="password" name="password" placeholder="Password" required="">
-					<input class="text w3lpass" type="password" name="password" placeholder="Confirm Password" required="">
-					<div class="wthree-text">
-						<label class="anim">
-							<input type="checkbox" class="checkbox" required="">
-							<span>I Agree To The Terms & Conditions</span>
-						</label>
-						<div class="clear"> </div>
-					</div>
-					<input type="submit" value="SIGNUP">
+      <div class="input-box">
+        <input type="text" placeholder="Enter your name" name="username" required>
+      </div>
+      <div class="input-box">
+        <input type="text" placeholder="Enter your email" name="email" required>
+      </div>
+      <div class="input-box">
+        <input type="password" placeholder="Create password" name="password"  required>
+      </div>
+      <div class="input-box">
+        <input type="password" placeholder="Confirm password" name="password" required>
+      </div>
+      <div class="policy">
+        <input type="checkbox">
+        <h3>I accept all terms & condition</h3>
+      </div>
+      <div class="input-box button">
+        <input type="Submit" value="Register Now">
+      </div>
+      <div class="text">
+        <h3>Already have an account? <a href="/">Login now</a></h3>
+      </div>
+    </form>
+  </div>
 
-				</form>
-
-    <a href="/">Existing User?</a>
 </body>
 </html>

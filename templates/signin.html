@@ -1,76 +1,129 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en" dir="ltr">
+  <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<style>
-    /* Set font styles and colors */
-body {
-    font-family: Arial, sans-serif;
-    color: #333;
-    background-color: #f4f4f4;
+    <link rel="stylesheet" href="style1.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
 }
-h2 {
-    text-align: center;
-    margin-top: 40px;
-    margin-bottom: 20px;
+body{
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url("https://momentous-earth-d6f.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fc30ea110-bc3b-4b72-9a8c-6117a4980ba2%2FUntitled.png?id=42759734-845b-4ffc-ba44-7b808ac9c853&table=block&spaceId=e1fd8c7d-b464-4da7-b3e6-86b1f08566f2&width=2000&userId=&cache=v2"); /* The image used */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover;
 }
-form {
-    width: 300px;
-    margin: 0 auto;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+.wrapper{
+  position: fixed;
+  left: 105px;
+  max-width: 430px;
+  width: 100%;
+  background: white;
+  padding: 34px;
+  border-radius: 6px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.2);
 }
-input[type="email"],
-input[type="password"] {
-    display: block;
-    width: 100%;
-    margin-bottom: 10px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
+.wrapper h2{
+  position: relative;
+  font-size: 22px;
+  font-weight: 600;
+  color: #333;
 }
-input[type="submit"] {
-    display: block;
-    width: 100%;
-    margin-top: 20px;
-    padding: 10px;
-    background-color: #008CBA;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+.wrapper h2::before{
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 28px;
+  border-radius: 12px;
+  background: #f15d66;
 }
-input[type="submit"]:hover {
-    background-color: #005F6B;
+.wrapper form{
+  margin-top: 30px;
 }
-a {
-    display: block;
-    text-align: center;
-    margin-top: 20px;
-    color: #008CBA;
-    text-decoration: none;
+.wrapper form .input-box{
+  height: 52px;
+  margin: 18px 0;
 }
-a:hover {
-    text-decoration: underline;
+form .input-box input{
+  height: 100%;
+  width: 100%;
+  outline: none;
+  padding: 0 15px;
+  font-size: 17px;
+  font-weight: 400;
+  color: #333;
+  border: 1.5px solid #C7BEBE;
+  border-bottom-width: 2.5px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
 }
+.input-box input:focus,
+.input-box input:valid{
+  border-color:#f15d66;
+}
+form .policy{
+  display: flex;
+  align-items: center;
+}
+form h3{
+  color: #707070;
+  font-size: 14px;
+  font-weight: 500;
+  margin-left: 10px;
+}
+.input-box.button input{
+  color: #fff;
+  letter-spacing: 1px;
+  border: none;
+  background: #f15d66;
+  cursor: pointer;
+}
+.input-box.button input:hover{
+  background: #f15d66
+}
+form .text h3{
+ color: #333;
+ width: 100%;
+ text-align: center;
+}
+form .text h3 a{
+  color: #f15d66;
+  text-decoration: none;
+}
+form .text h3 a:hover{
+  text-decoration: underline;
+}
+  </style>
+  </head>
 
-</style>
 <body>
-    <h2>Log In</h2>
-
+  <div class="wrapper">
+    <h2>Log-in</h2>
     <form action="logincheck" method="post">
-        {% csrf_token %}
-    <input type="email" name="email" placeholder="E-mail">
-    <input type="password" name="password" placeholder="Password">
-    <input type="submit" >
+      {% csrf_token %}
+      <div class="input-box">
+        <input type="text" placeholder="Enter your E-mail" name="email" required>
+      </div>
+      <div class="input-box">
+        <input type="password" placeholder="Enter your password" name="password" required>
+      </div>
+      <div class="input-box button">
+        <input type="Submit" value="Log-in">
+      </div>
+    </form>
     <a href="./signup">New account</a>
-        <p>{{message}}</p>
+    <p>{{message}}</p>
+  </div>
+
 </body>
 </html>
