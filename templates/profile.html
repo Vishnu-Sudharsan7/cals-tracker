@@ -213,6 +213,56 @@ div.footer{
 }
 */
 
+/* Popup container - can be anything you want */
+.form-popup {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
+
+/* Form container */
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+}
+
+/* Full-width input fields */
+.form-container input[type=text],
+.form-container input[type=email] {
+  width: 80%;
+  padding: 15px;
+  margin: 5px 0 10px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+/* Submit button */
+.form-container .btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom: 10px;
+  opacity: 0.8;
+}
+
+/* Close button */
+.form-container .cancel {
+  background-color: #f44336;
+}
+
+/* Hover effects */
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
+
+
 
 nav ul {
   list-style: none;
@@ -286,5 +336,41 @@ color:#6A0DAD
   </div>
 </div>
     {% endfor %}
+<div class="middle">
+    <div>
+    <button onclick="openForm()">Update details</button>
+        <div id="myForm" class="form-popup">
+  <form class="form-container">
+    <h1>My Form</h1>
+        <label for="name"><b>Height</b></label>
+    <input type="text" placeholder="Enter the height" name="weight" required>
+
+    <label for="name"><b>Weight</b></label>
+    <input type="text" placeholder="Enter the weight" name="weight" required>
+
+    <label for="email"><b>Goal</b></label>
+    <input type="email" placeholder="Goal weight" name="goal" required>
+
+    <button type="submit" class="btn">Update</button>
+    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+  </form>
+</div>
+
+
+
+
+
+    </div>
+</div>
+<script>
+    function openForm() {
+  document.getElementById("myForm").style.display = "block";
+}
+
+/* Close the form */
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+}
+</script>
 </body>
 </html>
